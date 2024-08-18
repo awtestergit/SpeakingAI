@@ -57,7 +57,7 @@ pip install -e .
 ```
 
 Download all models to your local machine to speed up the first time run: <br>
-Llama3 Instr 8B, BAAI/bge-reranker-v2-m3, intfloat/multilingual-e5-large, https://huggingface.co/openai/whisper-large-v3 <br>
+Llama3 Instr 8B, BAAI/bge-reranker-v2-m3, intfloat/multilingual-e5-large, whisper-large-v3 <br>
 *[See Notes] (#Notes)
 
 Install Qdrant docker
