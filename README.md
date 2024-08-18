@@ -1,30 +1,37 @@
 # SpeakingAI
 Audio-to-audio AI has strong business use cases where users can interact with AI using voice, the audio-in, audio-out AI application can be utilized across multiple industries to enhance efficiency and user experience, such as:
 
-**Customer Support Automation:** Acts as a virtual assistant to handle common customer queries, reducing the need for human agents and providing 24/7 support.
+- **Customer Support Automation:** Acts as a virtual assistant to handle common customer queries, reducing the need for human agents and providing 24/7 support.
 
-**Voice-Driven Knowledge Management:** Helps employees quickly access company information through voice queries, improving productivity in corporate environments.
+- **Voice-Driven Knowledge Management:** Helps employees quickly access company information through voice queries, improving productivity in corporate environments.
 
-**Healthcare Assistance:** Assists healthcare professionals by retrieving medical knowledge or patient data via voice, enabling more efficient and attentive patient care.
+- **Healthcare Assistance:** Assists healthcare professionals by retrieving medical knowledge or patient data via voice, enabling more efficient and attentive patient care.
 
-**Educational Support and Tutoring:** Functions as a voice-enabled tutor, offering personalized, on-demand explanations and resources to students.
+- **Educational Support and Tutoring:** Functions as a voice-enabled tutor, offering personalized, on-demand explanations and resources to students.
 
-**Interactive Voice-Activated Devices:** Enhances smart home devices with a sophisticated, knowledge-rich interaction model, improving user satisfaction.
+- **Interactive Voice-Activated Devices:** Enhances smart home devices with a sophisticated, knowledge-rich interaction model, improving user satisfaction.
 
-**Market Research and Insights Gathering:** Streamlines data collection in market research by conducting voice-driven surveys and providing real-time insights.
+- **Market Research and Insights Gathering:** Streamlines data collection in market research by conducting voice-driven surveys and providing real-time insights.
 
-**Voice-Activated Training Modules:** Improves corporate training programs by enabling interactive, voice-driven learning, leading to better employee performance.
+- **Voice-Activated Training Modules:** Improves corporate training programs by enabling interactive, voice-driven learning, leading to better employee performance.
 
 With the advance of multi-modal models such as GPT-4o, interacting with AI using voice or video is becoming a reality. You can build such an AI too, using all open source models where you can select the best suiting models and even fine-tune them according to your needs. This is an overall architecture:
 
 The architecture is a classic LLM + RAG form where the audio components (ASR, TTS) are added to it. The following explains this classic workflow:
-**audio** client application (such as metahuman/talking head, or pure voice) sends the audio stream to the backend AI server
-**ASR** the ASR model transcribes the audio to text as query
-**query embedding** the embedding model takes the query and output the embedding vector for the query
-**vector database query** vector database returns the results (containing text meta information) according to the query
-**reranker** the rerank model re-ranks the multiple results returned by the vector database; the reranking greatly helps to sort out irrelavant information returned by the vector search
-**LLM** LLM model generates the answer to the query using re-ranked relevant background information
-**TTS** TTS model output the audio wav of the text answer of LLM, and this audio stream is sent back to client
+
+- **audio**: client application (such as metahuman/talking head, or pure voice) sends the audio stream to the backend AI server
+
+- **ASR**: the ASR model transcribes the audio to text as query
+
+- **query embedding**: the embedding model takes the query and output the embedding vector for the query
+
+- **vector database query**: vector database returns the results (containing text meta information) according to the query
+
+- **reranker**: the rerank model re-ranks the multiple results returned by the vector database; the reranking greatly helps to sort out irrelavant information returned by the vector search
+
+- **LLM**: LLM model generates the answer to the query using re-ranked relevant background information
+
+- **TTS**: TTS model output the audio wav of the text answer of LLM, and this audio stream is sent back to client
 
 # Installation
 Prepare virtual environment (use your favorite virtual management tool), for example using conda:
