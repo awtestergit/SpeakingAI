@@ -22,6 +22,10 @@ Audio-to-audio AI has strong business use cases where users can interact with AI
 
 With the advance of multi-modal models such as GPT-4o, interacting with AI using voice or video is becoming a reality. You can build such an AI too, using all open source models where you can select the best suiting models and even fine-tune them according to your needs. This is an overall architecture:
 
+<p align='center'>
+  <img width="948" alt="SpeakingAI RAG Architecture" src="https://github.com/user-attachments/assets/cd8b50a4-7921-4556-b9d6-70b1ff761ad3">
+</p>
+
 The architecture is a classic LLM + RAG form where the audio components (ASR, TTS) are added to it. The following explains this classic workflow:
 
 - **audio**: client application (such as metahuman/talking head, or pure voice) sends the audio stream to the backend AI server
@@ -52,10 +56,28 @@ cd SpeakingAI
 pip install -e .
 ```
 
+Download all models to your local machine to speed up the first time run: <br>
+Llama3 Instr 8B, BAAI/bge-reranker-v2-m3, intfloat/multilingual-e5-large, https://huggingface.co/openai/whisper-large-v3 <br>
+*[See Notes] (#Notes)
+
+Install Qdrant docker
+```bash
+docker pull qdrant/qdrant
+```
+then
+```bash
+docker run -p 6333:6333 -p 6334:6334 \
+    -v $(pwd)/qdrant_storage:/qdrant/storage:z \
+    qdrant/qdrant
+```
+
 Create vector database for demo:
 ```bash
 python tal_kw_populate.py
 ```
+Config the demo server:
+
+* modify 'config.json' according to your local pathes
 
 Start the demo server:
 ```bash
@@ -71,19 +93,27 @@ http://127.0.0.1:8881/webui/
 click 'record' to record your voice query, and click 'Stop' to send the voice query to server.
 
 # Notes
-**all the model files are pre-downloaded to the local machine**
+**all the model files are pre-downloaded to the local machine, otherwise the first time of starting the server takes quite a long time**
 
 **LLM** model is LLama3 instr 8B, but you can choose any of your favorite LLM model. <br>
-Implementation code is models/llm_hf.py. Each LLM model generation-stop is different and I set the 'stop = ['<|eot_id|>']' for Llama, and sometimes I set the stop as '['<|eot_id|>', '\n\n']' to make sure the output stops at double break lines, for example.
+Implementation code is models/llm_hf.py. Each LLM model generation-stop is different and I set the 'stop = ['<|eot_id|>']' for Llama, and sometimes I set the stop as '['<|eot_id|>', '\n\n']' to make sure the output stops at double break lines, for example. <br>
+https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct
 
 **TTS** is Microsoft SpeechT5TTS, which is not great but quite fast. <br>
-Implementation code is in models/ttsmodel.py, which also include Bark TTS. Bark is better but also slower, and you can also choose other TTS of your choose.
+Implementation code is in models/ttsmodel.py, which also include Bark TTS. Bark is better but also slower, and you can also choose other TTS of your choose. <br>
+https://huggingface.co/microsoft/speecht5_tts 
+
+or if you use Bark TTS: <br>
+https://huggingface.co/suno/bark-small
 
 **Reranker** is BAAI/bge-reranker-v2-m3
+https://huggingface.co/BAAI/bge-reranker-v2-m3
 
 **Embedding** is intfloat/multilingual-e5-large
+https://huggingface.co/intfloat/multilingual-e5-large
 
 **ASR** is Whisper
+https://huggingface.co/openai/whisper-large-v3
 
 **Vector database** is Qdrant, and for the demo purpose, only adding knowledge to the vector database is implemented. For the backend knowledge, there are two areas where it can be improved:
 1. a full functional vector database management service, which is to manage the vector database itself, such as add/delete/update vector database
