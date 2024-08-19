@@ -143,5 +143,5 @@ https://huggingface.co/chatpdflocal/llama3.1-8b-gguf <br>
 2. install llama cpp Python binder, https://llama-cpp-python.readthedocs.io/en/latest/
 3. Note: if you use Apple Metal mac, the installation is 'CMAKE_ARGS="-DGGML_METAL=on" pip install llama-cpp-python' to enable metal support; otherwise 'pip install llama-cpp-python'
 4. in the config.json, set the LLM to your local gguf full path
-5. uncomment the whole file of 'llm_llamacpp.py', and uncomment 'llm = Llama3Cpp(llm_path)' in the tal_demo_server.py (comment out 'llm = Llama3(llm_path)')
+5. uncomment the whole file of 'llm_llamacpp.py', and uncomment '#from models.llm_llamacpp import Llama3Cpp', '#llm = Llama3Cpp(llm_path)' in the tal_demo_server.py (comment out 'llm = Llama3(llm_path)')
 6. that's it!
