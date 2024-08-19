@@ -9,6 +9,9 @@
 * [Installation](#installation)
 * [Notes & Model downloads](#notes)
 
+## Update
+Using Llama gguf model format is supported so that you can run the server if your GPU RAM is smaller. see [Special instruction of using llama3 GGUF](#llama-gguf)
+
 ## Description
 
 Audio-to-audio AI has strong business use cases where users can interact with AI using voice, the audio-in, audio-out AI application can be utilized across multiple industries to enhance efficiency and user experience, such as:
@@ -130,4 +133,15 @@ https://huggingface.co/openai/whisper-large-v3
 1. a full functional vector database management service, which is to manage the vector database itself, such as add/delete/update vector database
 2. add knowledge graph - using knowledge graph with vector database is an active research topic that can improve knowledge search greatly
 
+## Llama GGUF
+If you have small GPU, or just want the model runs fast, you can use GGUF format powered by Llama.cpp. <br>
 
+check out https://github.com/ggerganov/llama.cpp for more details if you want to quantize LLama3 8B by yourself, or you can download a ready to use model at huggingface, for example: <br>
+https://huggingface.co/chatpdflocal/llama3.1-8b-gguf <br>
+
+1. download the gguf model (or quantize it by yourself following the steps in llama.cpp github)
+2. install llama cpp Python binder, https://llama-cpp-python.readthedocs.io/en/latest/
+3. Note: if you use Apple Metal mac, the installation is 'CMAKE_ARGS="-DGGML_METAL=on" pip install llama-cpp-python' to enable metal support; otherwise 'pip install llama-cpp-python'
+4. in the config.json, set the LLM to your local gguf full path
+5. uncomment the whole file of 'llm_llamacpp.py', and uncomment 'llm = Llama3Cpp(llm_path)' in the tal_demo_server.py (comment out 'llm = Llama3(llm_path)')
+6. that's it!
