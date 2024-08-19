@@ -15,6 +15,7 @@ from qdrant_client import QdrantClient
 
 from models.tal_model import TALModel
 from models.llm_hf import Llama3
+#from models.llm_llamacpp import Llama3Cpp
 from models.reranker import BAAIReRankerM3Model
 from models.embed import IntfloatEmbeddingModel
 from models.asr_hf import ASRWhisperModel # asr
@@ -37,6 +38,7 @@ def create_app():
     llm_path = g_config['LLM']
     logger.info(f"Load LLM model: {llm_path}")
     llm = Llama3(llm_path)
+    #llm = Llama3Cpp(llm_path)
     #reranker
     reranker = None
     reranker_path = g_config['RERANKER']
