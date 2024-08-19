@@ -2,7 +2,14 @@
 
 **TLDR;** SpeakingAI is a demo of fully functional web AI server with audio query/answer in streaming, using LLM and RAG for backend knowledge.
 
-**Description** 
+## Index
+
+* [Description](#description)
+* [Architecture](#architecture)
+* [Installation](#installation)
+* [Notes & Model downloads](#notes)
+
+## Description
 
 Audio-to-audio AI has strong business use cases where users can interact with AI using voice, the audio-in, audio-out AI application can be utilized across multiple industries to enhance efficiency and user experience, such as:
 
@@ -22,6 +29,7 @@ Audio-to-audio AI has strong business use cases where users can interact with AI
 
 With the advance of multi-modal models such as GPT-4o, interacting with AI using voice or video is becoming a reality. You can build such an AI too, using all open source models where you can select the best suiting models and even fine-tune them according to your needs. This is an overall architecture:
 
+## Architecture
 <p align='center'>
   <img width="948" alt="SpeakingAI RAG Architecture" src="https://github.com/user-attachments/assets/cd8b50a4-7921-4556-b9d6-70b1ff761ad3">
 </p>
@@ -42,7 +50,7 @@ The architecture is a classic LLM + RAG form where the audio components (ASR, TT
 
 - **TTS**: TTS model output the audio wav of the text answer of LLM, and this audio stream is sent back to client
 
-# Installation
+## Installation
 Prepare virtual environment (use your favorite virtual management tool), for example using conda:
 ```bash
 conda create -n speakingai python
@@ -58,7 +66,7 @@ pip install -e .
 
 Download all models to your local machine to speed up the first time run: <br>
 Llama3 Instr 8B, BAAI/bge-reranker-v2-m3, intfloat/multilingual-e5-large, whisper-large-v3 <br>
-*[See Notes] (#Notes)
+*For model downloads, please see [Notes](#notes)
 
 Install Qdrant docker
 ```bash
@@ -92,7 +100,7 @@ In your web browser
 http://127.0.0.1:8881/webui/
 click 'record' to record your voice query, and click 'Stop' to send the voice query to server.
 
-# Notes
+## Notes
 **all the model files are pre-downloaded to the local machine, otherwise the first time of starting the server takes quite a long time**
 
 **LLM** model is LLama3 instr 8B, but you can choose any of your favorite LLM model. <br>
