@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+"""
 from interface.interface_model import ILanguageModel
 from llama_cpp import Llama, ChatCompletionRequestUserMessage, ChatCompletionRequestSystemMessage, ChatCompletionRequestAssistantMessage
 
@@ -109,3 +109,4 @@ class Llama3Cpp(LlamaCppModel):
         if (len(history)) == 0:
             history = [('Hi','Hello!')]
         return super().stream_chat(inputs, system_prompt, assistant_prompt, history, splitter, stop, string_outtype=string_outtype, output_delta=output_delta, **kwargs)
+"""
