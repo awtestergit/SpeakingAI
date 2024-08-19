@@ -85,7 +85,8 @@ python tal_kw_populate.py
 ```
 Config the demo server:
 
-* modify 'config.json' according to your local pathes
+* modify 'config.json' according to your local pathes <br>
+-- **note:** If you do not use Bark TTS, you do not need to config "TTS" and/or "SPEAKER" for Bark. The demo server uses the Microsoft SpeechT5 TTS by default. If you want to change it to Bark, you can set your Bark model path in the config.json, and uncomment the Bark model code in tal_demo_server.py (also comment out this line: tts = Speecht5TTS())
 
 Start the demo server:
 ```bash
@@ -96,9 +97,11 @@ Start demo client:
 python tal_demo_client.py
 ```
 
-In your web browser
-http://127.0.0.1:8881/webui/
-click 'record' to record your voice query, and click 'Stop' to send the voice query to server.
+In your web browser, go to http://127.0.0.1:8881/webui/ <br>
+Click 'record' to record your voice query, and click 'Stop' to send the voice query to server. <br>
+Since the knowledge in the vector database is about US economy, you can ask questions like "What is the US economy forecast?", or you can ask "What is your name", "What time is it" just for fun. <br>
+
+**note:** the gradio client takes a few seconds to upload your voice (you can monitor the print outs of the demo client), and I am not sure why the latest Gradio behaves like this - it used to be quite fast to upload the voice audio. Once the audio is transmitted to the demo server, the server is quite fast to answer the audio back if you use Microsoft SpeechT5 TTS, which is the default, but this TTS does not pronunce numbers and you can hear that all numbers are not pronunced. Bark is a lot better but is slow.
 
 ## Notes
 **all the model files are pre-downloaded to the local machine, otherwise the first time of starting the server takes quite a long time**
