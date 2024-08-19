@@ -61,7 +61,7 @@ Git pull:
 ```bash
 git clone https://github.com/awtestergit/SpeakingAI.git
 cd SpeakingAI
-pip install -e .
+pip install -r requirements.txt
 ```
 
 Download all models to your local machine to speed up the first time run: <br>
