@@ -1,0 +1,10 @@
+accelerate
+datasets
+fastapi
+gradio
+loguru
+sentencepiece
+scipy
+pyaudio
+qdrant_client
+transformers
