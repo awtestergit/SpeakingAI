@@ -34,7 +34,7 @@ With the advance of multi-modal models such as GPT-4o, interacting with AI using
 
 ## Architecture
 <p align='center'>
-  <img width="948" alt="SpeakingAI RAG Architecture" src="https://github.com/user-attachments/assets/cd8b50a4-7921-4556-b9d6-70b1ff761ad3">
+  <img width="996" alt="Screenshot 2024-08-19 at 19 57 31" src="https://github.com/user-attachments/assets/96c83c37-c061-4aae-bc8d-2451e8bb8c41">
 </p>
 
 The architecture is a classic LLM + RAG form where the audio components (ASR, TTS) are added to it. The following explains this classic workflow:
