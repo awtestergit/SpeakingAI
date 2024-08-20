@@ -1,6 +1,6 @@
 # SpeakingAI
 
-**TLDR;** SpeakingAI is a demo of fully functional web AI server with audio query/answer in streaming, using LLM and RAG for backend knowledge.
+**TLDR;** SpeakingAI is a demo of privately deployable 'GPT-4o like AI + RAG', a fully functional web AI server with audio query/answer in streaming, using LLM and RAG for backend knowledge.
 
 ## Index
 
