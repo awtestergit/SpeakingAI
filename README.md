@@ -10,7 +10,9 @@
 * [Notes & Model downloads](#notes)
 
 ## Update
-Using Llama gguf model format is supported so that you can run the server if your GPU RAM is smaller. see [Special instruction of using llama3 GGUF](#llama-gguf)
+Using Llama gguf model format is supported so that you can run the server if your GPU RAM is smaller. see [Special instruction of using llama3 GGUF](#llama-gguf) <br>
+
+Demo client under terminal console is added, which is a lot faster than gradio client. see [console client](#update-client)<br>
 
 ## Description
 
@@ -105,6 +107,14 @@ Click 'record' to record your voice query, and click 'Stop' to send the voice qu
 Since the knowledge in the vector database is about US economy, you can ask questions like "What is the US economy forecast?", or you can ask "What is your name", "What time is it" just for fun. <br>
 
 **note:** the gradio client takes a few seconds to upload your voice (you can monitor the print outs of the demo client), and I am not sure why the latest Gradio behaves like this - it used to be quite fast to upload the voice audio. Once the audio is transmitted to the demo server, the server is quite fast to answer the audio back if you use Microsoft SpeechT5 TTS, which is the default, but this TTS does not pronunce numbers and you can hear that all numbers are not pronunced. Bark is a lot better but is slow.
+
+## update client
+Demo client under terminal console is added, which is a lot faster than gradio client. <br>
+Start demo client under console:
+```bash
+python tal_demo_cli.py
+```
+
 
 ## Notes
 **all the model files are pre-downloaded to the local machine, otherwise the first time of starting the server takes quite a long time**
